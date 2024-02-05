@@ -1,6 +1,6 @@
 # bmi_calculator
 
-A new Flutter project.
+Flutter project to calculate BMI in adults.
 
 ## Getting Started
 
