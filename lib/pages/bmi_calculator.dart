@@ -35,11 +35,13 @@ class _BmiCalculatorState extends State<BmiCalculator> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: Container(),
+            child: Container(
+            ),
           ),
           Expanded(
             flex: 2,
             child: Container(
+              margin: const EdgeInsets.only(top: 80.0),
               child: GridView.builder(
                   itemCount: buttons.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
