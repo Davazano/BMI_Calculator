@@ -9,6 +9,14 @@ class BmiCalculator extends StatefulWidget {
 }
 
 class _BmiCalculatorState extends State<BmiCalculator> {
+
+  final List<String> buttons = [
+    "7", "8", "9", "->",
+    "4", "5", "6", "DEL",
+    "1", "2", "3", "CE",
+    "0", ".", "BMI",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
