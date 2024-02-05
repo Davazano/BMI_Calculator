@@ -1,3 +1,4 @@
+import "package:bmi_calculator/cal_widgets/cal_buttons.dart";
 import "package:flutter/material.dart";
 
 class BmiCalculator extends StatefulWidget {
@@ -19,7 +20,16 @@ class _BmiCalculatorState extends State<BmiCalculator> {
           ),
           Expanded(
             flex: 2,
-            child: Container(color: Colors.indigo,),
+            child: Container(
+              // color: Colors.indigo,
+              child: const Center(
+                child: CalButton(
+                  color: Colors.indigo,
+                  textColor: Colors.white,
+                  buttonText: "0",
+                ),
+              ),
+            ),
           ),
         ],
       ),
