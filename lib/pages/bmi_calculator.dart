@@ -9,12 +9,23 @@ class BmiCalculator extends StatefulWidget {
 }
 
 class _BmiCalculatorState extends State<BmiCalculator> {
-
   final List<String> buttons = [
-    "7", "8", "9", "->",
-    "4", "5", "6", "DEL",
-    "1", "2", "3", "CE",
-    "0", ".", "BMI",
+    "7",
+    "8",
+    "9",
+    "->",
+    "4",
+    "5",
+    "6",
+    "DEL",
+    "1",
+    "2",
+    "3",
+    "CE",
+    "00",
+    "0",
+    ".",
+    "BMI",
   ];
 
   @override
@@ -29,14 +40,15 @@ class _BmiCalculatorState extends State<BmiCalculator> {
           Expanded(
             flex: 2,
             child: Container(
-              // color: Colors.indigo,
-              child: const Center(
-                child: CalButton(
-                  color: Colors.indigo,
-                  textColor: Colors.white,
-                  buttonText: "0",
-                ),
-              ),
+              child: GridView.builder(
+                  itemCount: buttons.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4),
+                  itemBuilder: (BuildContext context, int index) => CalButton(
+                        buttonText: buttons[index],
+                        color: Colors.indigo,
+                        textColor: Colors.white,
+                      )),
             ),
           ),
         ],
