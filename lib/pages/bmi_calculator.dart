@@ -103,6 +103,11 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                       );
                     } else {
                       return CalButton(
+                        buttonTapped: () {
+                          setState(() {
+                            userQuestion += buttons[index];
+                          });
+                        },
                         buttonText: buttons[index],
                         color: Colors.white,
                         textColor: Colors.indigo,
