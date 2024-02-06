@@ -44,6 +44,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
+                  const SizedBox(height: 50,),
                   Container(
                     padding: const EdgeInsets.all(20),
                     alignment: Alignment.centerLeft,
