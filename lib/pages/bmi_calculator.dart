@@ -9,8 +9,8 @@ class BmiCalculator extends StatefulWidget {
 }
 
 class _BmiCalculatorState extends State<BmiCalculator> {
-  var userQuestion = "Question";
-  var userAnswer = "Answer";
+  var userQuestion = "";
+  var userAnswer = "";
 
   final List<String> buttons = [
     "7",
@@ -44,16 +44,24 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  const SizedBox(height: 50,),
+                  const SizedBox(
+                    height: 50,
+                  ),
                   Container(
                     padding: const EdgeInsets.all(20),
                     alignment: Alignment.centerLeft,
-                    child: Text(userQuestion),
+                    child: Text(
+                      userQuestion,
+                      style: const TextStyle(fontSize: 22),
+                    ),
                   ),
                   Container(
                     padding: const EdgeInsets.all(20),
                     alignment: Alignment.centerRight,
-                    child: Text(userAnswer),
+                    child: Text(
+                      userAnswer,
+                      style: const TextStyle(fontSize: 22),
+                    ),
                   )
                 ],
               ),
