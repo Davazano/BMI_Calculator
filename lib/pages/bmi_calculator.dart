@@ -9,6 +9,9 @@ class BmiCalculator extends StatefulWidget {
 }
 
 class _BmiCalculatorState extends State<BmiCalculator> {
+  var userQuestion = "Question";
+  var userAnswer = "Answer";
+
   final List<String> buttons = [
     "7",
     "8",
@@ -35,51 +38,57 @@ class _BmiCalculatorState extends State<BmiCalculator> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: Container(),
+            child: Container(
+              // color: Colors.deepPurple[100],
+              //margin: const EdgeInsets.only(bottom: 0.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[Text(userQuestion), Text(userAnswer)],
+              ),
+            ),
           ),
           Expanded(
             flex: 2,
             child: Container(
+              // color: Colors.deepPurple,
               margin: const EdgeInsets.only(top: 80.0),
               child: GridView.builder(
-                itemCount: buttons.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4),
-                itemBuilder: (BuildContext context, int index) { 
-                  if (index == 3) {
-                    return CalButton(
-                      buttonText: buttons[index],
-                      color: Colors.black,
-                      textColor: Colors.white,
-                    );
-                  } else if (index == 7) {
-                    return CalButton(
-                      buttonText: buttons[index],
-                      color: Colors.red,
-                      textColor: Colors.white,
-                    );
-                  } else if (index == 11) {
-                    return CalButton(
-                      buttonText: buttons[index],
-                      color: Colors.orange,
-                      textColor: Colors.white,
-                    );
-                  } else if (index == 15) {
-                    return CalButton(
-                      buttonText: buttons[index],
-                      color: Colors.indigo,
-                      textColor: Colors.white,
-                    );
-                  } else {
-                    return CalButton(
-                      buttonText: buttons[index],
-                      color: Colors.white,
-                      textColor: Colors.indigo,
-                    );
-                  }
-                  
-                }
-              ),
+                  itemCount: buttons.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4),
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index == 3) {
+                      return CalButton(
+                        buttonText: buttons[index],
+                        color: Colors.black,
+                        textColor: Colors.white,
+                      );
+                    } else if (index == 7) {
+                      return CalButton(
+                        buttonText: buttons[index],
+                        color: Colors.red,
+                        textColor: Colors.white,
+                      );
+                    } else if (index == 11) {
+                      return CalButton(
+                        buttonText: buttons[index],
+                        color: Colors.orange,
+                        textColor: Colors.white,
+                      );
+                    } else if (index == 15) {
+                      return CalButton(
+                        buttonText: buttons[index],
+                        color: Colors.indigo,
+                        textColor: Colors.white,
+                      );
+                    } else {
+                      return CalButton(
+                        buttonText: buttons[index],
+                        color: Colors.white,
+                        textColor: Colors.indigo,
+                      );
+                    }
+                  }),
             ),
           ),
         ],
