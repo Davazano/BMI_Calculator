@@ -43,7 +43,18 @@ class _BmiCalculatorState extends State<BmiCalculator> {
               //margin: const EdgeInsets.only(bottom: 0.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[Text(userQuestion), Text(userAnswer)],
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    alignment: Alignment.centerLeft,
+                    child: Text(userQuestion),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    alignment: Alignment.centerRight,
+                    child: Text(userAnswer),
+                  )
+                ],
               ),
             ),
           ),
