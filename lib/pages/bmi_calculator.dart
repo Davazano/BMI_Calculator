@@ -80,7 +80,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                       readOnly: true,
                       decoration: const InputDecoration(
                           border: UnderlineInputBorder(),
-                          labelText: "Enter your weight"),
+                          labelText: "Enter your weight (kg)"),
                     ),
                   ),
                   Padding(
