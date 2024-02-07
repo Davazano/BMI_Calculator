@@ -117,7 +117,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4),
                   itemBuilder: (BuildContext context, int index) {
-                    if (index == 3) { // toggle focus button to toggle textfield focus
+                    if (index == 3) {
+                      // toggle focus button to toggle textfield focus
                       return CalButton(
                         buttonTapped: () {
                           setState(() {
@@ -164,9 +165,13 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                         buttonTapped: () {
                           setState(() {
                             if (weightFocusNode.hasFocus) {
-                              weightTextController.text += buttons[index];
+                              weightTextController.text +=
+                                  checkAndFormatCalculatorInput(buttons[index],
+                                      weightTextController.text);
                             } else if (heightFocusNode.hasFocus) {
-                              heightTextController.text += buttons[index];
+                              heightTextController.text +=
+                                  checkAndFormatCalculatorInput(buttons[index],
+                                      heightTextController.text);
                             }
                           });
                         },
@@ -181,5 +186,20 @@ class _BmiCalculatorState extends State<BmiCalculator> {
         ],
       ),
     );
+  }
+
+  String checkAndFormatCalculatorInput(
+      String buttonString, String textFieldString) {
+    String value = "";
+    if (!(buttonString == "." && textFieldString.contains("."))) {
+      if (buttonString != "." && textFieldString == "0") {
+        value = ".$buttonString";
+      } else if (buttonString == "." && textFieldString == "") {
+        value = "0$buttonString";
+      } else {
+        value = buttonString;
+      }
+    }
+    return value;
   }
 }
