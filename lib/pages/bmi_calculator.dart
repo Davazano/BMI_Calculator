@@ -57,7 +57,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo[100],
+      backgroundColor: Colors.blue[100],
       body: Column(
         children: <Widget>[
           Expanded(
