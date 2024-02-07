@@ -71,7 +71,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                     height: 30,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
                       autofocus: true,
                       focusNode: weightFocusNode,
@@ -83,7 +84,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
                       focusNode: heightFocusNode,
                       controller: heightTextController,
@@ -115,8 +117,17 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4),
                   itemBuilder: (BuildContext context, int index) {
-                    if (index == 3) {
+                    if (index == 3) { // toggle focus button to toggle textfield focus
                       return CalButton(
+                        buttonTapped: () {
+                          setState(() {
+                            if (weightFocusNode.hasFocus) {
+                              heightFocusNode.requestFocus();
+                            } else if (heightFocusNode.hasFocus) {
+                              weightFocusNode.requestFocus();
+                            }
+                          });
+                        },
                         buttonText: buttons[index],
                         color: Colors.black,
                         textColor: Colors.white,
@@ -145,8 +156,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                           setState(() {
                             if (weightFocusNode.hasFocus) {
                               weightTextController.text += buttons[index];
-                            } 
-                            else if (heightFocusNode.hasFocus) {
+                            } else if (heightFocusNode.hasFocus) {
                               heightTextController.text += buttons[index];
                             }
                           });
