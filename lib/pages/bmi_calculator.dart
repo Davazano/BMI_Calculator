@@ -15,6 +15,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
   final heightTextController = TextEditingController();
 
   late FocusNode weightFocusNode;
+  late FocusNode heightFocusNode;
 
   final List<String> buttons = [
     "7",
@@ -40,6 +41,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
     super.initState();
 
     weightFocusNode = FocusNode();
+    heightFocusNode = FocusNode();
   }
 
   @override
@@ -48,6 +50,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
     weightTextController.dispose();
     weightFocusNode.dispose();
     heightTextController.dispose();
+    heightFocusNode.dispose();
     super.dispose();
   }
 
@@ -81,6 +84,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
+                      focusNode: heightFocusNode,
                       controller: heightTextController,
                       readOnly: true,
                       decoration: const InputDecoration(
@@ -103,7 +107,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
           Expanded(
             flex: 2,
             child: Container(
-              color: Colors.deepPurple,
+              color: Colors.blue[300],
               margin: const EdgeInsets.only(top: 80.0),
               child: GridView.builder(
                   itemCount: buttons.length,
@@ -140,7 +144,8 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                           setState(() {
                             if (weightFocusNode.hasFocus) {
                               weightTextController.text += buttons[index];
-                            } else {
+                            } 
+                            else if (heightFocusNode.hasFocus) {
                               heightTextController.text += buttons[index];
                             }
                           });
