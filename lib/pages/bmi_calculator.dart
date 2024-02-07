@@ -9,7 +9,7 @@ class BmiCalculator extends StatefulWidget {
 }
 
 class _BmiCalculatorState extends State<BmiCalculator> {
-  var userAnswer = "BMI is ";
+  var bmiAnswer = "BMI is ";
 
   final weightTextController = TextEditingController();
   final heightTextController = TextEditingController();
@@ -99,7 +99,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                     padding: const EdgeInsets.all(4),
                     alignment: Alignment.centerRight,
                     child: Text(
-                      userAnswer,
+                      bmiAnswer,
                       style: const TextStyle(fontSize: 22),
                     ),
                   )
@@ -162,7 +162,20 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                         textColor: Colors.white,
                       );
                     } else if (index == 15) {
+                      // BMI button to calculate BMI
                       return CalButton(
+                        buttonTapped: () {
+                          setState(() {
+                            if (weightTextController.text.isNotEmpty &&
+                                heightTextController.text.isNotEmpty) {
+                              var height =
+                                  double.parse(heightTextController.text);
+                              var heightSquared = height * height;
+                              bmiAnswer =
+                                  "BMI is ${(double.parse(weightTextController.text) / heightSquared).toStringAsFixed(2)}";
+                            }
+                          });
+                        },
                         buttonText: buttons[index],
                         color: Colors.indigo,
                         textColor: Colors.white,
