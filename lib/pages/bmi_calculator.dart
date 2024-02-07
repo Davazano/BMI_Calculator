@@ -9,8 +9,12 @@ class BmiCalculator extends StatefulWidget {
 }
 
 class _BmiCalculatorState extends State<BmiCalculator> {
-  var userQuestion = "";
-  var userAnswer = "";
+  var userAnswer = "BMI is ";
+
+  final weightTextController = TextEditingController();
+  final heightTextController = TextEditingController();
+
+  late FocusNode weightFocusNode;
 
   final List<String> buttons = [
     "7",
@@ -32,6 +36,22 @@ class _BmiCalculatorState extends State<BmiCalculator> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+
+    weightFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    weightTextController.dispose();
+    weightFocusNode.dispose();
+    heightTextController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.indigo[100],
@@ -45,18 +65,31 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   const SizedBox(
-                    height: 50,
+                    height: 30,
                   ),
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      userQuestion,
-                      style: const TextStyle(fontSize: 22),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    child: TextField(
+                      focusNode: weightFocusNode,
+                      controller: weightTextController,
+                      readOnly: true,
+                      decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          labelText: "Enter your weight"),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                    child: TextField(
+                      controller: heightTextController,
+                      readOnly: true,
+                      decoration: const InputDecoration(
+                          border: UnderlineInputBorder(),
+                          labelText: "Enter your height"),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(4),
                     alignment: Alignment.centerRight,
                     child: Text(
                       userAnswer,
@@ -70,7 +103,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
           Expanded(
             flex: 2,
             child: Container(
-              // color: Colors.deepPurple,
+              color: Colors.deepPurple,
               margin: const EdgeInsets.only(top: 80.0),
               child: GridView.builder(
                   itemCount: buttons.length,
@@ -105,7 +138,11 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                       return CalButton(
                         buttonTapped: () {
                           setState(() {
-                            userQuestion += buttons[index];
+                            if (weightFocusNode.hasFocus) {
+                              weightTextController.text += buttons[index];
+                            } else {
+                              heightTextController.text += buttons[index];
+                            }
                           });
                         },
                         buttonText: buttons[index],
