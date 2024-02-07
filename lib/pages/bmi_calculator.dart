@@ -149,7 +149,14 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                         textColor: Colors.white,
                       );
                     } else if (index == 11) {
+                      // Clear button to clear all text fields
                       return CalButton(
+                        buttonTapped: () {
+                          setState(() {
+                            weightTextController.text = "";
+                            heightTextController.text = "";
+                          });
+                        },
                         buttonText: buttons[index],
                         color: Colors.orange,
                         textColor: Colors.white,
