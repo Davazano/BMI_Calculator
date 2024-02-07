@@ -92,7 +92,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                       readOnly: true,
                       decoration: const InputDecoration(
                           border: UnderlineInputBorder(),
-                          labelText: "Enter your height"),
+                          labelText: "Enter your height (m)"),
                     ),
                   ),
                   Container(
