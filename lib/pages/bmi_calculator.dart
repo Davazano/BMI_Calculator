@@ -21,7 +21,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
     "7",
     "8",
     "9",
-    "->",
+    "<->",
     "4",
     "5",
     "6",
