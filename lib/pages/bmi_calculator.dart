@@ -134,6 +134,15 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                       );
                     } else if (index == 7) {
                       return CalButton(
+                        buttonTapped: () {
+                          setState(() {
+                            if (weightFocusNode.hasFocus) {
+                              weightTextController.text = "";
+                            } else if (heightFocusNode.hasFocus) {
+                              heightTextController.text = "";
+                            }
+                          });
+                        },
                         buttonText: buttons[index],
                         color: Colors.red,
                         textColor: Colors.white,
