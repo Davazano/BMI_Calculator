@@ -73,6 +73,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextField(
+                      autofocus: true,
                       focusNode: weightFocusNode,
                       controller: weightTextController,
                       readOnly: true,
