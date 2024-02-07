@@ -155,6 +155,7 @@ class _BmiCalculatorState extends State<BmiCalculator> {
                           setState(() {
                             weightTextController.text = "";
                             heightTextController.text = "";
+                            bmiAnswer = "BMI is ";
                           });
                         },
                         buttonText: buttons[index],
